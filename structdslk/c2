@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct
+{
+    char HoTen[101];
+    int Tuoi;
+    double DiemTB;
+} SinhVien;
+
+typedef struct Node
+{
+    SinhVien data;
+    struct Node *next;
+} Node;
+
+typedef struct
+{
+    Node *first;
+    Node *last;
+} LinkedList;
+
+Node *prevNode;
+
+LinkedList* createList()
+{
+    LinkedList *list= (LinkedList*)malloc(sizeof(LinkedList));
+    list->first = NULL;
+    list->last = NULL;
+    return list;
+}
+
+Node* createNode(SinhVien data)
+{
+    Node *node=(Node*)malloc(sizeof(Node));
+    node->data = data;
+    node->next = NULL;
+    return node;
+}
+
+void add1stNode(LinkedList *list, Node *node)
+{
+    list->first = node;
+    list->last = node;
+}
